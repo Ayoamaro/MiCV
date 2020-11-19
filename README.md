@@ -36,7 +36,7 @@ Se creará un controlador raíz (MainController), que será el controlador princ
 
 ![](https://github.com/Ayoamaro/MiCV/blob/main/docs/images/raiz.png?raw=true)
 
-<u>**PESTAÑA: PERSONAL**</u>
+**<u>PESTAÑA: PERSONAL</u>**
 
 Desde aquí se gestionan todos los datos personales del "CV". Se implementará un controlador (PersonalController) y una vista (PersonalView) a parte para esta pestaña, y será "MainController" quien meta a "PersonalView" en la pestaña correspondiente de "MainView".
 
