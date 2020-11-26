@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dad.javafx.controller.ContactoController;
 import dad.javafx.controller.PersonalController;
 import dad.javafx.micv.model.CV;
 import dad.javafx.micv.utils.JSONUtils;
@@ -26,8 +27,9 @@ import javafx.stage.FileChooser.ExtensionFilter;
  */
 public class Controller implements Initializable {
 
-		// CONTROLLERS
+		// CONTROLLER
 		private PersonalController personalController = new PersonalController();
+		private ContactoController contactoController = new ContactoController();
 		
 		// MODEL
 		private ObjectProperty<CV> cv = new SimpleObjectProperty<>();
@@ -52,6 +54,7 @@ public class Controller implements Initializable {
 		public void initialize(URL location, ResourceBundle resources) {
 
 			personalTab.setContent(personalController.getView());
+			contactoTab.setContent(contactoController.getView());
 			cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
 			cv.set(new CV());
 			
