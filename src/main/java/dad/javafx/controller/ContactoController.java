@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
  */
 public class ContactoController implements Initializable {
 
+	// VIEW
 	@FXML
     private SplitPane view;
     @FXML
@@ -25,14 +26,12 @@ public class ContactoController implements Initializable {
     @FXML
     private TableColumn<?, ?> numeroColumn, tipoColumn, emailColumn, urlColumn;
 
-    
 	public ContactoController() throws IOException {
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ContactoView.fxml"));
 		loader.setController(this);
 		loader.load();	
 	}
 
-	@Override
 	public void initialize(URL location, ResourceBundle resources) { }
 	
 	public SplitPane getView() {

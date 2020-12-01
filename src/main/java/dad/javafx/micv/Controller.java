@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dad.javafx.controller.ContactoController;
+import dad.javafx.controller.FormacionController;
 import dad.javafx.controller.PersonalController;
 import dad.javafx.micv.model.CV;
 import dad.javafx.micv.utils.JSONUtils;
@@ -30,6 +31,7 @@ public class Controller implements Initializable {
 		// CONTROLLER
 		private PersonalController personalController = new PersonalController();
 		private ContactoController contactoController = new ContactoController();
+		private FormacionController formacionController = new FormacionController();
 		
 		// MODEL
 		private ObjectProperty<CV> cv = new SimpleObjectProperty<>();
@@ -50,11 +52,10 @@ public class Controller implements Initializable {
 			return view;
 		}
 
-		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-
 			personalTab.setContent(personalController.getView());
 			contactoTab.setContent(contactoController.getView());
+			formacionTab.setContent(formacionController.getView());
 			cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
 			cv.set(new CV());
 			
