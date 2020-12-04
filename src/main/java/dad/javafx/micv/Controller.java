@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dad.javafx.controller.ConocimientosController;
 import dad.javafx.controller.ContactoController;
+import dad.javafx.controller.ExperienciaController;
 import dad.javafx.controller.FormacionController;
 import dad.javafx.controller.PersonalController;
 import dad.javafx.micv.model.CV;
@@ -32,6 +34,8 @@ public class Controller implements Initializable {
 		private PersonalController personalController = new PersonalController();
 		private ContactoController contactoController = new ContactoController();
 		private FormacionController formacionController = new FormacionController();
+		private ExperienciaController experienciaController = new ExperienciaController();
+		private ConocimientosController conocimientosController = new ConocimientosController();
 		
 		// MODEL
 		private ObjectProperty<CV> cv = new SimpleObjectProperty<>();
@@ -48,18 +52,21 @@ public class Controller implements Initializable {
 			loader.load();
 		}
 		
-		public BorderPane getView() {
-			return view;
-		}
-
 		public void initialize(URL location, ResourceBundle resources) {
 			personalTab.setContent(personalController.getView());
 			contactoTab.setContent(contactoController.getView());
 			formacionTab.setContent(formacionController.getView());
+			experienciaTab.setContent(experienciaController.getView());
+			conocimientosTab.setContent(conocimientosController.getView());
 			cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
 			cv.set(new CV());
 			
 		}
+		
+		public BorderPane getView() {
+			return view;
+		}
+
 
 	    private void onCVChanged(ObservableValue<? extends CV> o, CV ov, CV nv) {
 	    	
