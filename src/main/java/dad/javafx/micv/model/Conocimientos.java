@@ -1,5 +1,7 @@
 package dad.javafx.micv.model;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -9,13 +11,9 @@ import javafx.beans.property.StringProperty;
  */
 public class Conocimientos {
 
-	StringProperty denominacion = new SimpleStringProperty();
-	
-	public Conocimientos() { }
-	
-	public Conocimientos(String denominacion) {
-		this.denominacion.set(denominacion);
-	}
+	private StringProperty denominacion = new SimpleStringProperty();
+	private ObjectProperty<Idioma> idioma = new SimpleObjectProperty<Idioma>();
+	private ObjectProperty<Nivel> nivel = new SimpleObjectProperty<Nivel>();
 	
 	public final StringProperty denominacionProperty() {
 		return this.denominacion;
@@ -27,5 +25,29 @@ public class Conocimientos {
 	
 	public final void setDenominacion(final String denominacion) {
 		this.denominacionProperty().set(denominacion);
+	}
+
+	public final ObjectProperty<Idioma> idiomaProperty() {
+		return this.idioma;
+	}
+	
+	public final Idioma getIdioma() {
+		return this.idiomaProperty().get();
+	}
+	
+	public final void setIdioma(final Idioma idioma) {
+		this.idiomaProperty().set(idioma);
+	}
+	
+	public final ObjectProperty<Nivel> nivelProperty() {
+		return this.nivel;
+	}
+	
+	public final Nivel getNivel() {
+		return this.nivelProperty().get();
+	}
+	
+	public final void setNivel(final Nivel nivel) {
+		this.nivelProperty().set(nivel);
 	}
 }
