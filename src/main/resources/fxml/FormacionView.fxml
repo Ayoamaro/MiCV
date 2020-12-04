@@ -7,20 +7,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="713.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <!-- TODO Add Nodes -->
    <children>
       <TableView fx:id="table" editable="true" prefHeight="400.0" prefWidth="513.0" HBox.hgrow="ALWAYS">
         <columns>
-          <TableColumn fx:id="desdeCol" prefWidth="120.0" text="Desde" />
-          <TableColumn fx:id="hastaCol" prefWidth="120.0" text="Hasta" />
-            <TableColumn fx:id="denominacionCol" prefWidth="200.0" text="Denominación" />
-            <TableColumn fx:id="organizadorCol" prefWidth="200.0" text="Organizador" />
+          <TableColumn fx:id="desde" prefWidth="120.0" text="Desde" />
+          <TableColumn fx:id="hasta" prefWidth="120.0" text="Hasta" />
+            <TableColumn fx:id="denominacion" prefWidth="200.0" text="Denominación" />
+            <TableColumn fx:id="organizador" prefWidth="200.0" text="Organizador" />
         </columns>
       </TableView>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" HBox.hgrow="NEVER">
          <children>
-            <Button maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onAñadir" text="Añadir" />
+            <Button maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNuevo" text="Añadir" />
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onEliminar" text="Eliminar" />
          </children>
          <HBox.margin>

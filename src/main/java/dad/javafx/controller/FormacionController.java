@@ -50,7 +50,7 @@ public class FormacionController {
 	}
 
     @FXML
-    private void onAñadir(ActionEvent event) { }
+    private void onNuevo(ActionEvent event) { }
 
     @FXML
     private void onEliminar(ActionEvent event) { }
