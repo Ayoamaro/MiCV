@@ -9,6 +9,7 @@ import dad.javafx.micv.model.Formacion;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,7 @@ import javafx.scene.layout.HBox;
  */
 public class FormacionController {
 
+	// MODEL
 	private ListProperty<Formacion> formaciones = new SimpleListProperty<Formacion>(FXCollections.observableArrayList());
 	
 	// VIEW
@@ -52,4 +54,18 @@ public class FormacionController {
 
     @FXML
     private void onEliminar(ActionEvent event) { }
+
+    
+	public final ListProperty<Formacion> formacionesProperty() {
+		return this.formaciones;
+	}
+	
+	public final ObservableList<Formacion> getFormaciones() {
+		return this.formacionesProperty().get();
+	}
+	
+	public final void setFormaciones(final ObservableList<Formacion> formaciones) {
+		this.formacionesProperty().set(formaciones);
+	}
+	
 }

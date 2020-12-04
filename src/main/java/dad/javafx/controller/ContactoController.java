@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dad.javafx.micv.model.Contacto;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +21,9 @@ import javafx.scene.control.TableView;
  */
 public class ContactoController implements Initializable {
 
+	// MODEL
+	private ObjectProperty<Contacto> contacto = new SimpleObjectProperty<>();
+	
 	// VIEW
 	@FXML
     private SplitPane view;
@@ -55,4 +61,17 @@ public class ContactoController implements Initializable {
 
     @FXML
     void onEliminarWeb(ActionEvent e) { }
+
+    
+    public final ObjectProperty<Contacto> contactoProperty() {
+		return this.contacto;
+	}
+
+	public final Contacto getContacto() {
+		return this.contactoProperty().get();
+	}
+
+	public final void setContacto(final Contacto contacto) {
+		this.contactoProperty().set(contacto);
+	}
 }

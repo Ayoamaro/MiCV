@@ -6,6 +6,10 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import dad.javafx.micv.model.Experiencia;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +23,9 @@ import javafx.scene.layout.HBox;
  *
  */
 public class ExperienciaController implements Initializable {
+	
+	// MODEL
+	private ListProperty<Experiencia> experiencias = new SimpleListProperty<Experiencia>(FXCollections.observableArrayList());
 	
 	// VIEW
 	@FXML
@@ -48,5 +55,17 @@ public class ExperienciaController implements Initializable {
 
     @FXML
     private void onEliminar(ActionEvent event) { }
-    
+
+	
+    public final ListProperty<Experiencia> experienciasProperty() {
+		return this.experiencias;
+	}
+	
+	public final ObservableList<Experiencia> getExperiencias() {
+		return this.experienciasProperty().get();
+	}
+	
+	public final void setExperiencias(final ObservableList<Experiencia> experiencias) {
+		this.experienciasProperty().set(experiencias);
+	}
 }

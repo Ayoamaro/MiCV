@@ -27,77 +27,74 @@ import javafx.scene.layout.GridPane;
  */
 public class PersonalController implements Initializable {
 
-		// MODEL
-		private ObjectProperty<Personal> personal = new SimpleObjectProperty<>();
+	// MODEL
+	private ObjectProperty<Personal> personal = new SimpleObjectProperty<>();
 
-		// VIEW
-		@FXML
-		private GridPane view;
-		@FXML
-		private TextField identificacionText, nombreText, apellidosText, codigoPostalText, localidadText;
-		@FXML
-		private DatePicker fechaNacimientoDate;
-		@FXML
-		private TextArea direccionText;
-		@FXML
-		private ListView<Nacionalidad> nacionalidadesList;
-		@FXML
-		private ComboBox<String> paisCombo;
-		@FXML
-		private Button nuevaNacionalidadButton, quitarNacionalidadButton;
+	// VIEW
+	@FXML
+	private GridPane view;
+	@FXML
+	private TextField identificacionText, nombreText, apellidosText, codigoPostalText, localidadText;
+	@FXML
+	private DatePicker fechaNacimientoDate;
+	@FXML
+	private TextArea direccionText;
+	@FXML
+	private ListView<Nacionalidad> nacionalidadesList;
+	@FXML
+	private ComboBox<String> paisCombo;
+	@FXML
+	private Button nuevaNacionalidadButton, quitarNacionalidadButton;
 
-		public PersonalController() throws IOException {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PersonalView.fxml"));
-			loader.setController(this);
-			loader.load();
-		}
+	public PersonalController() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PersonalView.fxml"));
+		loader.setController(this);
+		loader.load();
+	}
 
-		@Override
-		public void initialize(URL location, ResourceBundle resources) {
-
-			personal.addListener((o, ov, nv) -> onPersonalChanged(o, ov, nv));
-		}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		personal.addListener((o, ov, nv) -> onPersonalChanged(o, ov, nv));
+	}
 		
-		private void onPersonalChanged(ObservableValue<? extends Personal> o, Personal ov, Personal nv) {
+	private void onPersonalChanged(ObservableValue<? extends Personal> o, Personal ov, Personal nv) {
 
-			System.out.println("ov=" + ov + "/nv=" + nv);
-			if (ov != null) {
-				identificacionText.textProperty().unbindBidirectional(ov.identificacionProperty());
-				nombreText.textProperty().unbindBidirectional(ov.nombreProperty());
-				apellidosText.textProperty().unbindBidirectional(ov.apellidosProperty());
-				fechaNacimientoDate.valueProperty().unbindBidirectional(ov.fechaNacimientoProperty());
-				// TODO desbindear el resto de propiedades
-			}
+		System.out.println("ov=" + ov + "/nv=" + nv);
+		if (ov != null) {
+			identificacionText.textProperty().unbindBidirectional(ov.identificacionProperty());
+			nombreText.textProperty().unbindBidirectional(ov.nombreProperty());
+			apellidosText.textProperty().unbindBidirectional(ov.apellidosProperty());
+			fechaNacimientoDate.valueProperty().unbindBidirectional(ov.fechaNacimientoProperty());
+		}
 			
-			if (nv != null) {
-				identificacionText.textProperty().bindBidirectional(nv.identificacionProperty());
-				nombreText.textProperty().bindBidirectional(nv.nombreProperty());
-				apellidosText.textProperty().bindBidirectional(nv.apellidosProperty());
-				fechaNacimientoDate.valueProperty().bindBidirectional(nv.fechaNacimientoProperty());
-				// TODO bindear el resto de propiedades			
-			}
+		if (nv != null) {
+			identificacionText.textProperty().bindBidirectional(nv.identificacionProperty());
+			nombreText.textProperty().bindBidirectional(nv.nombreProperty());
+			apellidosText.textProperty().bindBidirectional(nv.apellidosProperty());
+			fechaNacimientoDate.valueProperty().bindBidirectional(nv.fechaNacimientoProperty());		
+		}
 			
-		}
+	}
 
-		public GridPane getView() {
-			return view;
-		}
+	public GridPane getView() {
+		return view;
+	}
 
-		@FXML
-		void onNuevaNacionalidadAction(ActionEvent event) { }
+	@FXML
+	void onNuevaNacionalidadAction(ActionEvent event) { }
 
-		@FXML
-		void onQuitarNacionalidadAction(ActionEvent event) { }
+	@FXML
+	void onQuitarNacionalidadAction(ActionEvent event) { }
 
-		public final ObjectProperty<Personal> personalProperty() {
-			return this.personal;
-		}
+	public final ObjectProperty<Personal> personalProperty() {
+		return this.personal;
+	}
 
-		public final Personal getPersonal() {
-			return this.personalProperty().get();
-		}
+	public final Personal getPersonal() {
+		return this.personalProperty().get();
+	}
 
-		public final void setPersonal(final Personal personal) {
-			this.personalProperty().set(personal);
-		}
+	public final void setPersonal(final Personal personal) {
+		this.personalProperty().set(personal);
+	}
 }
