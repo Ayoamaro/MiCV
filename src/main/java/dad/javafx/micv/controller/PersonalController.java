@@ -66,9 +66,9 @@ public class PersonalController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		personal.addListener((o, oldValue, newValue) -> onPersonalChanged(o, oldValue, newValue));	
 		quitarNacionalidadButton.setDisable(true);
-
+		personal.addListener((o, oldValue, newValue) -> onPersonalChanged(o, oldValue, newValue));	
+		
 		ReadCSVFiles.readNacionalidades(nacionalidadesCSV);
 		ReadCSVFiles.readPaises(paisesCSV);
 
