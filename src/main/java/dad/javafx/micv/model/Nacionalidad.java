@@ -30,4 +30,9 @@ public class Nacionalidad {
 	public final void setDenominacion(final String denominacion) {
 		this.denominacionProperty().set(denominacion);
 	}
+	
+	@Override
+	public String toString() {
+		return denominacion.get();
+	}
 }
