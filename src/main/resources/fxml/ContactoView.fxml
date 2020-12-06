@@ -27,8 +27,8 @@
                   </TableView>
                   <VBox prefHeight="50.0">
                      <children>
-                        <Button maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirTelefono" text="Añadir" />
-                        <Button maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarTelefono" text="Eliminar" />
+                        <Button fx:id="btnNuevoTlfn" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirTelefono" text="Añadir" />
+                        <Button fx:id="btnEliminarTlfn" maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarTelefono" text="Eliminar" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -52,8 +52,8 @@
                   </TableView>
                   <VBox prefHeight="50.0">
                      <children>
-                        <Button maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirCorreo" text="Añadir" />
-                        <Button maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarCorreo" text="Eliminar" />
+                        <Button fx:id="btnNuevoCorreo" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirCorreo" text="Añadir" />
+                        <Button fx:id="btnEliminarCorreo" maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarCorreo" text="Eliminar" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -77,8 +77,8 @@
                   </TableView>
                   <VBox prefHeight="50.0">
                      <children>
-                        <Button maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirWeb" text="Añadir" />
-                        <Button maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarWeb" text="Eliminar" />
+                        <Button fx:id="btnNuevaWeb" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirWeb" text="Añadir" />
+                        <Button fx:id="btnEliminarWeb" maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarWeb" text="Eliminar" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

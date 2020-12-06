@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,6 +32,8 @@ public class ContactoController implements Initializable {
     private TableView<?> telefonosTable, correoTable, webTable;
     @FXML
     private TableColumn<?, ?> numeroColumn, tipoColumn, emailColumn, urlColumn;
+    @FXML
+	private Button btnNuevoTlfn, btnEliminarTlfn, btnNuevoCorreo, btnEliminarCorreo, btnNuevaWeb, btnEliminarWeb;
 
     // CONSTRUCTOR
 	public ContactoController() throws IOException {
