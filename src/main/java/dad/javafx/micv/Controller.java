@@ -46,39 +46,37 @@ public class Controller implements Initializable {
 	@FXML
 	private Tab personalTab, contactoTab, formacionTab, experienciaTab, conocimientosTab;
 		
+	// CONSTRUCTOR
 	public Controller() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
 		
+	// INITIALIZE
 	public void initialize(URL location, ResourceBundle resources) {
 		personalTab.setContent(personalController.getView());
 		contactoTab.setContent(contactoController.getView());
 		formacionTab.setContent(formacionController.getView());
 		experienciaTab.setContent(experienciaController.getView());
 		conocimientosTab.setContent(conocimientosController.getView());
-		cv.addListener((o, ov, nv) -> onCVChanged(o, ov, nv));
+		cv.addListener((o, oldValue, newValue) -> onCVChanged(o, oldValue, newValue));
 		cv.set(new CV());	
 	}
 		
-	public BorderPane getView() {
-		return view;
-	}
-
-	private void onCVChanged(ObservableValue<? extends CV> o, CV ov, CV nv) {
+	private void onCVChanged(ObservableValue<? extends CV> o, CV oldValue, CV newValue) {
 	    	
-		// Desbindeo del CV anterior
-		if (ov != null) {
+		// UNBIND CV PREVIOUS
+		if (oldValue != null) {
 			personalController.personalProperty().unbind(); 
 	    	contactoController.contactoProperty().unbind();
 			formacionController.formacionesProperty().unbind();
 			experienciaController.experienciasProperty().unbind();
 			conocimientosController.habilidadesProperty().unbind();
 	    }
-	    // Bindeo del nuevo CV
-	    if (nv != null) {
-	    	personalController.personalProperty().bind(nv.personalProperty()); 
+	    // BIND NEW CV
+	    if (newValue != null) {
+	    	personalController.personalProperty().bind(newValue.personalProperty()); 
 	    }
 	}
 
@@ -130,4 +128,9 @@ public class Controller implements Initializable {
 
 	@FXML
 	void onSalirAction(ActionEvent event) { }
+	
+	// SHOW VIEW
+	public BorderPane getView() {
+		return view;
+	}
 }

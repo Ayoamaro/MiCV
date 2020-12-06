@@ -55,16 +55,18 @@ public class PersonalController implements Initializable {
 	@FXML
 	private Button nuevaNacionalidadButton, quitarNacionalidadButton;
 	
+	// CONSTRUCTOR
 	public PersonalController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PersonalView.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
 
+	// INITIALIZE
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		personal.addListener((o, ov, nv) -> onPersonalChanged(o, ov, nv));	
+		personal.addListener((o, oldValue, newValue) -> onPersonalChanged(o, oldValue, newValue));	
 		quitarNacionalidadButton.setDisable(true);
 
 		ReadCSVFiles.readNacionalidades(nacionalidadesCSV);
@@ -75,38 +77,35 @@ public class PersonalController implements Initializable {
 		
 	}
 		
-	private void onPersonalChanged(ObservableValue<? extends Personal> o, Personal ov, Personal nv) {
+	private void onPersonalChanged(ObservableValue<? extends Personal> o, Personal oldValue, Personal newValue) {
 
-		if (ov != null) {
-			identificacionText.textProperty().unbindBidirectional(ov.identificacionProperty());
-			nombreText.textProperty().unbindBidirectional(ov.nombreProperty());
-			apellidosText.textProperty().unbindBidirectional(ov.apellidosProperty());
-			fechaNacimientoDate.valueProperty().unbindBidirectional(ov.fechaNacimientoProperty());
-			direccionText.textProperty().unbindBidirectional(ov.direccionProperty());
-			localidadText.textProperty().unbindBidirectional(ov.localidadProperty());
-			codigoPostalText.textProperty().unbindBidirectional(ov.codigoPostalProperty());
-			paisCombo.valueProperty().unbindBidirectional(ov.paisProperty());
-			nacionalidadesList.itemsProperty().unbindBidirectional(ov.nacionalidadesProperty());
+		if (oldValue != null) {
+			identificacionText.textProperty().unbindBidirectional(oldValue.identificacionProperty());
+			nombreText.textProperty().unbindBidirectional(oldValue.nombreProperty());
+			apellidosText.textProperty().unbindBidirectional(oldValue.apellidosProperty());
+			fechaNacimientoDate.valueProperty().unbindBidirectional(oldValue.fechaNacimientoProperty());
+			direccionText.textProperty().unbindBidirectional(oldValue.direccionProperty());
+			localidadText.textProperty().unbindBidirectional(oldValue.localidadProperty());
+			codigoPostalText.textProperty().unbindBidirectional(oldValue.codigoPostalProperty());
+			paisCombo.valueProperty().unbindBidirectional(oldValue.paisProperty());
+			nacionalidadesList.itemsProperty().unbindBidirectional(oldValue.nacionalidadesProperty());
 		}
-			
-		if (nv != null) {
-			identificacionText.textProperty().bindBidirectional(nv.identificacionProperty());
-			nombreText.textProperty().bindBidirectional(nv.nombreProperty());
-			apellidosText.textProperty().bindBidirectional(nv.apellidosProperty());
-			fechaNacimientoDate.valueProperty().bindBidirectional(nv.fechaNacimientoProperty());
-			direccionText.textProperty().bindBidirectional(nv.direccionProperty());
-			localidadText.textProperty().bindBidirectional(nv.localidadProperty());
-			codigoPostalText.textProperty().bindBidirectional(nv.codigoPostalProperty());
-			paisCombo.valueProperty().bindBidirectional(nv.paisProperty());
-			nacionalidadesList.itemsProperty().bindBidirectional(nv.nacionalidadesProperty());
+
+		if (newValue != null) {
+			identificacionText.textProperty().bindBidirectional(newValue.identificacionProperty());
+			nombreText.textProperty().bindBidirectional(newValue.nombreProperty());
+			apellidosText.textProperty().bindBidirectional(newValue.apellidosProperty());
+			fechaNacimientoDate.valueProperty().bindBidirectional(newValue.fechaNacimientoProperty());
+			direccionText.textProperty().bindBidirectional(newValue.direccionProperty());
+			localidadText.textProperty().bindBidirectional(newValue.localidadProperty());
+			codigoPostalText.textProperty().bindBidirectional(newValue.codigoPostalProperty());
+			paisCombo.valueProperty().bindBidirectional(newValue.paisProperty());
+			nacionalidadesList.itemsProperty().bindBidirectional(newValue.nacionalidadesProperty());
 		}
 			
 	}
-
-	public GridPane getView() {
-		return view;
-	}
-
+	
+	// VIEW
 	@FXML
 	void onNuevaNacionalidadAction(ActionEvent event) { 
 		
@@ -120,9 +119,15 @@ public class PersonalController implements Initializable {
 		quitarNacionalidadButton.setDisable(false);
 	}
 
+	// VIEW
 	@FXML
 	void onQuitarNacionalidadAction(ActionEvent event) { 
 		getPersonal().getNacionalidades().remove(select.get());
+	}
+
+	// SHOW VIEW
+	public GridPane getView() {
+		return view;
 	}
 
 	public final ObjectProperty<Personal> personalProperty() {
