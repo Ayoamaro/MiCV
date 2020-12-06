@@ -2,7 +2,7 @@
 
 Implementar una aplicación JavaFX que para la creación y edición de currículums vitae. En principio la aplicación recogerá toda la información de una persona. En una versión futura de la aplicación podremos exportar la información que queramos en formato PDF.
 
-La información de los CV se deberá almacenar en ficheros **JSON** con extensión ".cv". Se deberá utilizar el framework [FxGson ](https://github.com/joffrey-bion/fx-gson)para la persistencia de los currículums.
+La información de los CV se deberá almacenar en ficheros **JSON** con extensión ".cv". Se deberá utilizar el framework **[FxGson ]**(https://github.com/joffrey-bion/fx-gson)para la persistencia de los currículums.
 
 El modelo de datos de la aplicación será conforme al siguiente diagrama de clases UML:
 
