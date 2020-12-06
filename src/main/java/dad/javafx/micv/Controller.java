@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dad.javafx.controller.ConocimientosController;
-import dad.javafx.controller.ContactoController;
-import dad.javafx.controller.ExperienciaController;
-import dad.javafx.controller.FormacionController;
-import dad.javafx.controller.PersonalController;
+import dad.javafx.micv.controller.ConocimientosController;
+import dad.javafx.micv.controller.ContactoController;
+import dad.javafx.micv.controller.ExperienciaController;
+import dad.javafx.micv.controller.FormacionController;
+import dad.javafx.micv.controller.PersonalController;
 import dad.javafx.micv.model.CV;
 import dad.javafx.micv.utils.JSONUtils;
 import javafx.beans.property.ObjectProperty;
