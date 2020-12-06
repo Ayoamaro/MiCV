@@ -105,7 +105,6 @@ public class PersonalController implements Initializable {
 			
 	}
 	
-	// VIEW
 	@FXML
 	void onNuevaNacionalidadAction(ActionEvent event) { 
 		
@@ -119,7 +118,6 @@ public class PersonalController implements Initializable {
 		quitarNacionalidadButton.setDisable(false);
 	}
 
-	// VIEW
 	@FXML
 	void onQuitarNacionalidadAction(ActionEvent event) { 
 		getPersonal().getNacionalidades().remove(select.get());
