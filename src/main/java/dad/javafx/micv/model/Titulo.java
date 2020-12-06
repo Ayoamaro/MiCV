@@ -18,6 +18,16 @@ public class Titulo {
 	private StringProperty denominacion = new SimpleStringProperty();
 	private StringProperty organizador = new SimpleStringProperty();
 	
+	public Titulo() {}
+	
+	public Titulo(String denominacion, String organizador, LocalDate desde, LocalDate hasta) {
+		super();
+		this.denominacion.set(denominacion);
+		this.organizador.set(organizador);
+		this.desde.set(desde);
+		this.hasta.set(hasta);
+	}
+	
 	public final ObjectProperty<LocalDate> desdeProperty() {
 		return this.desde;
 	}
@@ -53,7 +63,7 @@ public class Titulo {
 	public final void setDenominacion(final String denominacion) {
 		this.denominacionProperty().set(denominacion);
 	}
-
+	
 	public final StringProperty organizadorProperty() {
 		return this.organizador;
 	}
@@ -65,4 +75,12 @@ public class Titulo {
 	public final void setOrganizador(final String organizador) {
 		this.organizadorProperty().set(organizador);
 	}
+
+	@Override
+	public String toString() {
+		return "Titulo [fechaDesde=" + desde + ", fechaHasta=" + hasta + ", denominacion=" + denominacion
+				+ ", organizador=" + organizador + "]";
+	}
+
+	
 }

@@ -76,7 +76,9 @@ public class Controller implements Initializable {
 	    }
 	    // BIND NEW CV
 	    if (newValue != null) {
-	    	personalController.personalProperty().bind(newValue.personalProperty()); 
+	    	personalController.personalProperty().bind(newValue.personalProperty());
+	    	formacionController.formacionesProperty().bind(newValue.formacionProperty());
+			experienciaController.experienciasProperty().bind(newValue.experienciasProperty());
 	    }
 	}
 

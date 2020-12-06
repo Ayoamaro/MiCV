@@ -32,17 +32,16 @@ public class ContactoController implements Initializable {
     @FXML
     private TableColumn<?, ?> numeroColumn, tipoColumn, emailColumn, urlColumn;
 
+    // CONSTRUCTOR
 	public ContactoController() throws IOException {
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ContactoView.fxml"));
 		loader.setController(this);
 		loader.load();	
 	}
 
+	// INITIALIZE
 	public void initialize(URL location, ResourceBundle resources) { }
 	
-	public SplitPane getView() {
-		return view;
-	}
 
 	@FXML
     void onAñadirCorreo(ActionEvent e) { }
@@ -62,6 +61,11 @@ public class ContactoController implements Initializable {
     @FXML
     void onEliminarWeb(ActionEvent e) { }
 
+    
+    // SHOW VIEW
+ 	public SplitPane getView() {
+ 		return view;
+ 	}
     
     public final ObjectProperty<Contacto> contactoProperty() {
 		return this.contacto;
