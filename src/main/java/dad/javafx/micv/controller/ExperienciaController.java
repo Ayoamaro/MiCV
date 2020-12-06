@@ -119,6 +119,7 @@ public class ExperienciaController implements Initializable {
 		dialog.setResultConverter(dialogButton -> {
 			if (dialogButton == loginButtonType) {
 				Experiencia experiencia = new Experiencia();
+				
 				experiencia.setDenominacion(denominacionField.textProperty().get());
 				experiencia.setEmpleador(empleadorField.textProperty().get());
 				experiencia.setDesde(desdePicker.getValue());

@@ -117,6 +117,7 @@ public class FormacionController implements Initializable {
 		dialog.setResultConverter(dialogButton -> {
 			if (dialogButton == loginButtonType) {
 				Titulo titulo = new Titulo();
+				
 	    		titulo.setDenominacion(denominacionField.textProperty().get());
 	    		titulo.setOrganizador(organizadorField.textProperty().get());
 	    		titulo.setDesde(desdePicker.getValue());
