@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
@@ -30,23 +31,23 @@ public class ConocimientosController implements Initializable {
 	@FXML
 	private HBox view;
 	@FXML
-	private TableView<Conocimientos> table;
+	private TableView<Conocimientos> tablaCon;
 	@FXML
 	private TableColumn<Conocimientos, String> denominacion, nivel;
+	@FXML
+	private Button btnConocimiento, btnNuevo, btnEliminar;
 	
+	// CONSTRUCTOR
 	public ConocimientosController() throws IOException {
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ConocimientosView.fxml"));
 		loader.setController(this);
 		loader.load();
 	}
 
+	// INITIALIZE
 	@Override
 	public void initialize(URL location, ResourceBundle resources) { }
     
-	public HBox getView() {
-    	return view;
-    }
-	
 	@FXML
     private void onNuevoConocimiento(ActionEvent event) { }
 
@@ -56,7 +57,11 @@ public class ConocimientosController implements Initializable {
     @FXML
     private void onEliminar(ActionEvent event) { }
 
-    
+    // SHOW VIEW
+ 	public HBox getView() {
+     	return view;
+     }
+ 	
 	public final ListProperty<Conocimientos> habilidadesProperty() {
 		return this.habilidades;
 	}

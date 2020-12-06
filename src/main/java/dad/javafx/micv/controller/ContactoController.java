@@ -61,7 +61,6 @@ public class ContactoController implements Initializable {
     @FXML
     void onEliminarWeb(ActionEvent e) { }
 
-    
     // SHOW VIEW
  	public SplitPane getView() {
  		return view;
