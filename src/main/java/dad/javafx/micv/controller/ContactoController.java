@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 
 import dad.javafx.micv.model.Contacto;
 import dad.javafx.micv.model.Email;
-import dad.javafx.micv.model.Experiencia;
 import dad.javafx.micv.model.Telefono;
 import dad.javafx.micv.model.TipoTelefono;
 import dad.javafx.micv.model.Web;
@@ -19,11 +18,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -159,6 +156,9 @@ public class ContactoController implements Initializable {
     void onEliminarTelefono(ActionEvent e) { 
     	Telefono lastTelephone = (Telefono) telefonosTable.getSelectionModel().getSelectedItem();
     	telefonosTable.getItems().remove(lastTelephone);
+    	if (telefonosTable.getSelectionModel().getSelectedItem() == null) {
+    		btnEliminarTlfn.setDisable(true);
+		}
     }
 
     @FXML
@@ -172,6 +172,7 @@ public class ContactoController implements Initializable {
 
 		result.ifPresent(newEmail -> { 
 			correoTable.getItems().add(new Email(newEmail));
+			btnEliminarCorreo.setDisable(false);
 		});
     }
     
@@ -179,6 +180,9 @@ public class ContactoController implements Initializable {
     void onEliminarCorreo(ActionEvent e) { 
     	Email lastEmail = correoTable.getSelectionModel().getSelectedItem();
     	correoTable.getItems().remove(lastEmail);
+    	if (correoTable.getSelectionModel().getSelectedItem() == null) {
+    		btnEliminarCorreo.setDisable(true);
+		}
     }
 
     @FXML
@@ -192,6 +196,7 @@ public class ContactoController implements Initializable {
 
 		result.ifPresent(newWeb -> { 
 			webTable.getItems().add(new Web(newWeb));
+			btnEliminarWeb.setDisable(false);
 		});
     }
     
@@ -199,6 +204,9 @@ public class ContactoController implements Initializable {
     void onEliminarWeb(ActionEvent e) { 
     	Web lastWeb = webTable.getSelectionModel().getSelectedItem();
     	webTable.getItems().remove(lastWeb);
+    	if (webTable.getSelectionModel().getSelectedItem() == null) {
+    		btnEliminarWeb.setDisable(true);
+		}
     }
 
     // SHOW VIEW
