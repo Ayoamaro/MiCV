@@ -17,7 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
@@ -91,31 +90,32 @@ public class FormacionController implements Initializable {
 
 	@FXML
     private void onNuevo(ActionEvent event) { 
-		Dialog<Titulo> dialog = new Dialog<Titulo>();
-		dialog.setTitle("Nuevo título");
+		Dialog<Titulo> tab = new Dialog<Titulo>();
+		tab.setTitle("Nuevo título");
 		
-		ButtonType loginButtonType = new ButtonType("Crear", ButtonData.OK_DONE);
-		dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+		ButtonType createButton = new ButtonType("Crear", ButtonData.OK_DONE);
+		tab.getDialogPane().getButtonTypes().addAll(createButton, ButtonType.CANCEL);
 
-		GridPane grid = new GridPane();
-		grid.setHgap(10);
-		grid.setVgap(10);
-		grid.setPadding(new Insets(15, 150, 15, 15));
+		// CREATE SCENE TAB WITH GRIDPANE
+		GridPane scene = new GridPane();
+		scene.setHgap(10);
+		scene.setVgap(10);
+		scene.setPadding(new Insets(15, 150, 15, 15));
 
 		TextField denominacionField = new TextField();
 		TextField organizadorField = new TextField();
 		DatePicker desdePicker = new DatePicker();
 		DatePicker hastaPicker = new DatePicker();
 		
-		grid.addRow(0, new Label("Denominación: "), denominacionField);
-		grid.addRow(1, new Label("Organizador: "), organizadorField);
-		grid.addRow(2, new Label("Desde: "), desdePicker);
-		grid.addRow(3, new Label("Hasta: "), hastaPicker);
+		scene.addRow(0, new Label("Denominación: "), denominacionField);
+		scene.addRow(1, new Label("Organizador: "), organizadorField);
+		scene.addRow(2, new Label("Desde: "), desdePicker);
+		scene.addRow(3, new Label("Hasta: "), hastaPicker);
 		
-		dialog.getDialogPane().setContent(grid);
+		tab.getDialogPane().setContent(scene);
 		
-		dialog.setResultConverter(dialogButton -> {
-			if (dialogButton == loginButtonType) {
+		tab.setResultConverter(tabButton -> {
+			if (tabButton == createButton) {
 				Titulo titulo = new Titulo();
 				
 	    		titulo.setDenominacion(denominacionField.textProperty().get());
@@ -128,7 +128,7 @@ public class FormacionController implements Initializable {
 			return null;
 		});
 
-		Optional<Titulo> result = dialog.showAndWait();
+		Optional<Titulo> result = tab.showAndWait();
 		if (result.isPresent()) {
 			tablaFor.getItems().add(result.get());
 			btnEliminar.setDisable(false);
@@ -138,16 +138,7 @@ public class FormacionController implements Initializable {
     @FXML
     private void onEliminar(ActionEvent event) { 
     	Titulo titulo = tablaFor.getSelectionModel().getSelectedItem();
-
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setHeaderText(null);
-		alert.setTitle("Eliminar Título");
-		alert.setContentText("¿Estás seguro de que quieres borrar este título?");
-		
-		Optional<ButtonType> action = alert.showAndWait();
-		if (action.get() == ButtonType.OK) {
-			tablaFor.getItems().remove(titulo);
-		}
+    	tablaFor.getItems().remove(titulo);
     }
 
     // SHOW VIEW

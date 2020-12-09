@@ -27,7 +27,7 @@
                   </TableView>
                   <VBox prefHeight="50.0">
                      <children>
-                        <Button fx:id="btnNuevoTlfn" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirTelefono" text="Añadir" />
+                        <Button fx:id="btnNuevoTlfn" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onNuevoTelefono" text="Añadir" />
                         <Button fx:id="btnEliminarTlfn" maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarTelefono" text="Eliminar" />
                      </children>
                      <HBox.margin>
@@ -52,7 +52,7 @@
                   </TableView>
                   <VBox prefHeight="50.0">
                      <children>
-                        <Button fx:id="btnNuevoCorreo" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirCorreo" text="Añadir" />
+                        <Button fx:id="btnNuevoCorreo" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onNuevoCorreo" text="Añadir" />
                         <Button fx:id="btnEliminarCorreo" maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarCorreo" text="Eliminar" />
                      </children>
                      <HBox.margin>
@@ -69,7 +69,7 @@
                <children>
                   <TableView fx:id="webTable" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="50.0" minWidth="500.0" prefHeight="50.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
                      <columns>
-                        <TableColumn fx:id="urlColumn" maxWidth="1.7976931348623157E308" prefWidth="350.0" text="URL" />
+                        <TableColumn fx:id="webColumn" maxWidth="1.7976931348623157E308" prefWidth="350.0" text="URL" />
                      </columns>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" top="5.0" />
@@ -77,7 +77,7 @@
                   </TableView>
                   <VBox prefHeight="50.0">
                      <children>
-                        <Button fx:id="btnNuevaWeb" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onAñadirWeb" text="Añadir" />
+                        <Button fx:id="btnNuevaWeb" maxHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onNuevoWeb" text="Añadir" />
                         <Button fx:id="btnEliminarWeb" maxWidth="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#onEliminarWeb" text="Eliminar" />
                      </children>
                      <HBox.margin>

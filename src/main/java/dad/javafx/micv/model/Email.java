@@ -11,6 +11,13 @@ public class Email {
 
 	private StringProperty direccion = new SimpleStringProperty();
 
+	public Email() { }
+	
+	public Email(String direccion) {
+		super();
+		this.direccion.set(direccion);
+	}
+
 	public final StringProperty direccionProperty() {
 		return this.direccion;
 	}

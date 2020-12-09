@@ -17,7 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
@@ -93,31 +92,32 @@ public class ExperienciaController implements Initializable {
     
 	@FXML
     private void onNuevo(ActionEvent event) { 
-		Dialog<Experiencia> dialog = new Dialog<Experiencia>();
-		dialog.setTitle("Nueva experiencia");
+		Dialog<Experiencia> tab = new Dialog<Experiencia>();
+		tab.setTitle("Nueva experiencia");
 		
-		ButtonType loginButtonType = new ButtonType("Crear", ButtonData.OK_DONE);
-		dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+		ButtonType createButton = new ButtonType("Crear", ButtonData.OK_DONE);
+		tab.getDialogPane().getButtonTypes().addAll(createButton, ButtonType.CANCEL);
 
-		GridPane grid = new GridPane();
-		grid.setHgap(10);
-		grid.setVgap(10);
-		grid.setPadding(new Insets(15, 150, 15, 15));
+		// CREATE SCENE TAB WITH GRIDPANE
+		GridPane scene = new GridPane();
+		scene.setHgap(10);
+		scene.setVgap(10);
+		scene.setPadding(new Insets(15, 150, 15, 15));
 
 		TextField denominacionField = new TextField();
 		TextField empleadorField = new TextField();
 		DatePicker desdePicker = new DatePicker();
 		DatePicker hastaPicker = new DatePicker();
 		
-		grid.addRow(0, new Label("Denominación: "), denominacionField);
-		grid.addRow(1, new Label("Empleador: "), empleadorField);
-		grid.addRow(2, new Label("Desde: "), desdePicker);
-		grid.addRow(3, new Label("Hasta: "), hastaPicker);
+		scene.addRow(0, new Label("Denominación: "), denominacionField);
+		scene.addRow(1, new Label("Empleador: "), empleadorField);
+		scene.addRow(2, new Label("Desde: "), desdePicker);
+		scene.addRow(3, new Label("Hasta: "), hastaPicker);
 		
-		dialog.getDialogPane().setContent(grid);
+		tab.getDialogPane().setContent(scene);
 		
-		dialog.setResultConverter(dialogButton -> {
-			if (dialogButton == loginButtonType) {
+		tab.setResultConverter(tabButton -> {
+			if (tabButton == createButton) {
 				Experiencia experiencia = new Experiencia();
 				
 				experiencia.setDenominacion(denominacionField.textProperty().get());
@@ -130,7 +130,7 @@ public class ExperienciaController implements Initializable {
 			return null;
 		});
 
-		Optional<Experiencia> result = dialog.showAndWait();
+		Optional<Experiencia> result = tab.showAndWait();
 		if (result.isPresent()) {
 			tablaExp.getItems().add(result.get());
 			btnEliminar.setDisable(false);
@@ -140,16 +140,7 @@ public class ExperienciaController implements Initializable {
     @FXML
     private void onEliminar(ActionEvent event) { 
     	Experiencia experiencia = tablaExp.getSelectionModel().getSelectedItem();
-
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setHeaderText(null);
-		alert.setTitle("Eliminar Experiencia");
-		alert.setContentText("¿Estás seguro de que quieres borrar esta experiencia?");
-		
-		Optional<ButtonType> action = alert.showAndWait();
-		if (action.get() == ButtonType.OK) {
-			tablaExp.getItems().remove(experiencia);
-		}
+    	tablaExp.getItems().remove(experiencia);
     }
     
     // SHOW VIEW
