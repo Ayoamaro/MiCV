@@ -30,7 +30,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
  */
 public class Controller implements Initializable {
 
-	// CONTROLLER
+	private static String file = "";
 	private PersonalController personalController = new PersonalController();
 	private ContactoController contactoController = new ContactoController();
 	private FormacionController formacionController = new FormacionController();
@@ -72,13 +72,15 @@ public class Controller implements Initializable {
 	    	contactoController.contactoProperty().unbind();
 			formacionController.formacionesProperty().unbind();
 			experienciaController.experienciasProperty().unbind();
-			conocimientosController.habilidadesProperty().unbind();
+			conocimientosController.conocimientosProperty().unbind();
 	    }
 	    // BIND NEW CV
 	    if (newValue != null) {
 	    	personalController.personalProperty().bind(newValue.personalProperty());
+	    	contactoController.contactoProperty().bind(newValue.contactoProperty());
 	    	formacionController.formacionesProperty().bind(newValue.formacionProperty());
 			experienciaController.experienciasProperty().bind(newValue.experienciasProperty());
+			conocimientosController.conocimientosProperty().bind(newValue.conocimientosProperty());
 	    }
 	}
 
@@ -104,7 +106,18 @@ public class Controller implements Initializable {
 	void onAcercaDeAction(ActionEvent event) { }
 
 	@FXML
-	void onGuardarAction(ActionEvent event) { }
+	void onGuardarAction(ActionEvent event) { 
+		try {
+			File cvFile = new File(file);
+			if (cvFile.exists()) {
+				JSONUtils.toJson(cvFile, cv.get());
+			} else {
+				this.onGuardarComoAction(event);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
 	void onGuardarComoAction(ActionEvent event) {

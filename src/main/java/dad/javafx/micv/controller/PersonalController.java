@@ -81,6 +81,7 @@ public class PersonalController implements Initializable {
 		
 	private void onPersonalChanged(ObservableValue<? extends Personal> o, Personal oldValue, Personal newValue) {
 
+		// UNBIND OLDVALUE
 		if (oldValue != null) {
 			identificacionText.textProperty().unbindBidirectional(oldValue.identificacionProperty());
 			nombreText.textProperty().unbindBidirectional(oldValue.nombreProperty());
@@ -92,7 +93,7 @@ public class PersonalController implements Initializable {
 			paisCombo.valueProperty().unbindBidirectional(oldValue.paisProperty());
 			nacionalidadesList.itemsProperty().unbindBidirectional(oldValue.nacionalidadesProperty());
 		}
-
+		// BIND NEWVALUE
 		if (newValue != null) {
 			identificacionText.textProperty().bindBidirectional(newValue.identificacionProperty());
 			nombreText.textProperty().bindBidirectional(newValue.nombreProperty());

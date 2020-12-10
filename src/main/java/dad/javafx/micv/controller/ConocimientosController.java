@@ -41,7 +41,7 @@ import javafx.stage.Stage;
 public class ConocimientosController implements Initializable {
 
 	// MODEL
-	private ListProperty<Conocimientos> habilidades = new SimpleListProperty<Conocimientos>(FXCollections.observableArrayList());
+	private ListProperty<Conocimientos> conocimientos = new SimpleListProperty<Conocimientos>(FXCollections.observableArrayList());
 	
 	// VIEW
 	@FXML
@@ -64,7 +64,7 @@ public class ConocimientosController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) { 
 		
-		habilidades.addListener((o, oldValue, newValue) -> onConocimientoChanged(o, oldValue, newValue));
+		conocimientos.addListener((o, oldValue, newValue) -> onConocimientoChanged(o, oldValue, newValue));
 		
 		denominacionColumn.setCellValueFactory(v -> v.getValue().denominacionProperty());
 		nivelColumn.setCellValueFactory(v -> v.getValue().nivelProperty());
@@ -77,10 +77,11 @@ public class ConocimientosController implements Initializable {
     
 	private void onConocimientoChanged(ObservableValue<? extends ObservableList<Conocimientos>> o, ObservableList<Conocimientos> oldValue, ObservableList<Conocimientos> newValue) {
 		
+		// UNBIND OLDVALUE
 		if (oldValue != null) {
 			tablaCon.setItems(null);
 		}
-
+		// BIND NEWVALUE
 		if (newValue != null) {
 			tablaCon.setItems(newValue);
 		}
@@ -212,15 +213,15 @@ public class ConocimientosController implements Initializable {
      	return view;
      }
  	
-	public final ListProperty<Conocimientos> habilidadesProperty() {
-		return this.habilidades;
+	public final ListProperty<Conocimientos> conocimientosProperty() {
+		return this.conocimientos;
 	}
 	
-	public final ObservableList<Conocimientos> getHabilidades() {
-		return this.habilidadesProperty().get();
+	public final ObservableList<Conocimientos> getConocimientos() {
+		return this.conocimientosProperty().get();
 	}
 	
-	public final void setHabilidades(final ObservableList<Conocimientos> habilidades) {
-		this.habilidadesProperty().set(habilidades);
+	public final void setconocimientos(final ObservableList<Conocimientos> conocimientos) {
+		this.conocimientosProperty().set(conocimientos);
 	}
 }

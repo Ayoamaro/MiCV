@@ -14,8 +14,11 @@ import javafx.collections.ObservableList;
 public class CV {
 
 	private ObjectProperty<Personal> personal = new SimpleObjectProperty<Personal>(new Personal());
+	private ObjectProperty<Contacto> contacto = new SimpleObjectProperty<Contacto>(new Contacto());
 	private ListProperty<Titulo> formacion = new SimpleListProperty<>(FXCollections.observableArrayList());
 	private ListProperty<Experiencia> experiencias = new SimpleListProperty<>(FXCollections.observableArrayList());
+	private ListProperty<Conocimientos> conocimientos = new SimpleListProperty<>(FXCollections.observableArrayList());
+	
 
 	public final ObjectProperty<Personal> personalProperty() {
 		return this.personal;
@@ -27,6 +30,18 @@ public class CV {
 
 	public final void setPersonal(final Personal personal) {
 		this.personalProperty().set(personal);
+	}
+	
+	public final ObjectProperty<Contacto> contactoProperty() {
+		return this.contacto;
+	}
+	
+	public final Contacto getContacto() {
+		return this.contactoProperty().get();
+	}
+	
+	public final void setContacto(final Contacto contacto) {
+		this.contactoProperty().set(contacto);
 	}
 
 	public final ListProperty<Titulo> formacionProperty() {
@@ -51,5 +66,17 @@ public class CV {
 	
 	public final void setExperiencias(final ObservableList<Experiencia> experiencias) {
 		this.experienciasProperty().set(experiencias);
+	}
+
+	public final ListProperty<Conocimientos> conocimientosProperty() {
+		return this.conocimientos;
+	}
+	
+	public final ObservableList<Conocimientos> getConocimientos() {
+		return this.conocimientosProperty().get();
+	}
+	
+	public final void setConocimientos(final ObservableList<Conocimientos> conocimientos) {
+		this.conocimientosProperty().set(conocimientos);
 	}
 }

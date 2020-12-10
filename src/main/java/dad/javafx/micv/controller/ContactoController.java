@@ -94,12 +94,13 @@ public class ContactoController implements Initializable {
 
     private void onContactoChanged(ObservableValue<? extends Contacto> o, Contacto oldValue, Contacto newValue) {
 
+    	// UNBIND OLDVALUE
     	if (oldValue != null) {
     		telefonosTable.itemsProperty().unbindBidirectional(oldValue.telefonosProperty());
 			correoTable.itemsProperty().unbindBidirectional(oldValue.emailsProperty());
 			webTable.itemsProperty().unbindBidirectional(oldValue.websProperty());
 		}
-
+    	// BIND NEWVALUE
 		if (newValue != null) {
 			telefonosTable.itemsProperty().bindBidirectional(newValue.telefonosProperty());
 			correoTable.itemsProperty().bindBidirectional(newValue.emailsProperty());

@@ -84,10 +84,11 @@ public class ExperienciaController implements Initializable {
 	
 	private void onExperienciaChanged(ObservableValue<? extends ObservableList<Experiencia>> o, ObservableList<Experiencia> oldValue, ObservableList<Experiencia> newValue) {
 		
+		// UNBIND OLDVALUE
     	if (oldValue != null) {
     		tablaExp.setItems(null);
 		}
-
+    	// BIND NEWVALUE
 		if (newValue != null) {
 			tablaExp.setItems(newValue);
 		}

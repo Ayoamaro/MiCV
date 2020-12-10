@@ -82,10 +82,11 @@ public class FormacionController implements Initializable {
 	
     private void onFormacionChanged(ObservableValue<? extends ObservableList<Titulo>> o, ObservableList<Titulo> oldValue, ObservableList<Titulo> newValue) {
 		
+    	// UNBIND OLDVALUE
     	if (oldValue != null) {
     		tablaFor.setItems(null);
 		}
-
+    	// BIND NEWVALUE
 		if (newValue != null) {
 			tablaFor.setItems(newValue);
 		}
