@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
@@ -27,8 +28,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import javafx.util.converter.LocalDateStringConverter;
 
 /**
@@ -98,6 +101,9 @@ public class ExperienciaController implements Initializable {
 		ButtonType createButton = new ButtonType("Crear", ButtonData.OK_DONE);
 		tab.getDialogPane().getButtonTypes().addAll(createButton, ButtonType.CANCEL);
 
+		Stage stage = (Stage) tab.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image(this.getClass().getResource("/images/cv64x64.png").toString()));
+		
 		// CREATE SCENE TAB WITH GRIDPANE
 		GridPane scene = new GridPane();
 		scene.setHgap(10);
@@ -139,8 +145,22 @@ public class ExperienciaController implements Initializable {
 
     @FXML
     private void onEliminar(ActionEvent event) { 
-    	Experiencia experiencia = tablaExp.getSelectionModel().getSelectedItem();
-    	tablaExp.getItems().remove(experiencia);
+    	Experiencia lastExperience = tablaExp.getSelectionModel().getSelectedItem();
+
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/images/cv64x64.png"));
+		alert.setHeaderText(null);
+		alert.setTitle("Eliminar Experiencia");
+		alert.setContentText("¿Estas seguro de que quieres borrar esta experiencia?");
+		
+		Optional<ButtonType> action = alert.showAndWait();
+		if (action.get() == ButtonType.OK) {
+			tablaExp.getItems().remove(lastExperience);
+		}
+    	
+    	if (tablaExp.getSelectionModel().getSelectedItem() == null) {
+    		btnEliminar.setDisable(true);
+		}
     }
     
     // SHOW VIEW

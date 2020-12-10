@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -32,7 +33,9 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 /**
@@ -112,13 +115,16 @@ public class ContactoController implements Initializable {
 
 		ButtonType createButton = new ButtonType("Añadir", ButtonData.OK_DONE);
 		tab.getDialogPane().getButtonTypes().addAll(createButton, ButtonType.CANCEL);
+		
+		Stage stage = (Stage) tab.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image(this.getClass().getResource("/images/cv64x64.png").toString()));
 
 		// CREATE SCENE TAB WITH GRIDPANE
 		GridPane scene = new GridPane();
 		scene.setHgap(10);
 		scene.setVgap(10);
 		scene.setPadding(new Insets(15, 150, 15, 15));
-
+		
 		TextField tlfnField = new TextField();
 		tlfnField.setPromptText("Número de teléfono");
 		ComboBox tipoTlfnBox = new ComboBox();
@@ -127,7 +133,7 @@ public class ContactoController implements Initializable {
 
 		scene.addRow(0, new Label("Número: "), tlfnField);
 		scene.addRow(1, new Label("Tipo: "), tipoTlfnBox);
-
+		
 		tab.getDialogPane().setContent(scene);
 		
 		tab.setResultConverter(tabButton -> {
@@ -155,7 +161,18 @@ public class ContactoController implements Initializable {
     @FXML
     void onEliminarTelefono(ActionEvent e) { 
     	Telefono lastTelephone = (Telefono) telefonosTable.getSelectionModel().getSelectedItem();
-    	telefonosTable.getItems().remove(lastTelephone);
+    	
+    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/images/cv64x64.png"));
+		alert.setHeaderText(null);
+		alert.setTitle("Eliminar Teléfono");
+		alert.setContentText("¿Estas seguro de que quieres borrar este teléfono?");
+		
+		Optional<ButtonType> action = alert.showAndWait();
+		if (action.get() == ButtonType.OK) {
+			telefonosTable.getItems().remove(lastTelephone);
+		}
+    	
     	if (telefonosTable.getSelectionModel().getSelectedItem() == null) {
     		btnEliminarTlfn.setDisable(true);
 		}
@@ -167,6 +184,9 @@ public class ContactoController implements Initializable {
 		dialog.setTitle("Nuevo e-mail");
 		dialog.setHeaderText("Crear una nueva dirección de correo");
 		dialog.setContentText("Email:");
+		
+		Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image(this.getClass().getResource("/images/cv64x64.png").toString()));
 
 		Optional<String> result = dialog.showAndWait();
 
@@ -179,7 +199,18 @@ public class ContactoController implements Initializable {
     @FXML
     void onEliminarCorreo(ActionEvent e) { 
     	Email lastEmail = correoTable.getSelectionModel().getSelectedItem();
-    	correoTable.getItems().remove(lastEmail);
+
+    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/images/cv64x64.png"));
+		alert.setHeaderText(null);
+		alert.setTitle("Eliminar E-mail");
+		alert.setContentText("¿Estas seguro de que quieres borrar este e-mail?");
+		
+		Optional<ButtonType> action = alert.showAndWait();
+		if (action.get() == ButtonType.OK) {
+			correoTable.getItems().remove(lastEmail);
+		}
+    	
     	if (correoTable.getSelectionModel().getSelectedItem() == null) {
     		btnEliminarCorreo.setDisable(true);
 		}
@@ -191,6 +222,9 @@ public class ContactoController implements Initializable {
 		dialog.setTitle("Nuevo web");
 		dialog.setHeaderText("Crear una nueva dirección web");
 		dialog.setContentText("URL:");
+		
+		Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image(this.getClass().getResource("/images/cv64x64.png").toString()));
 
 		Optional<String> result = dialog.showAndWait();
 
@@ -203,7 +237,18 @@ public class ContactoController implements Initializable {
     @FXML
     void onEliminarWeb(ActionEvent e) { 
     	Web lastWeb = webTable.getSelectionModel().getSelectedItem();
-    	webTable.getItems().remove(lastWeb);
+    	
+    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	((Stage)alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/images/cv64x64.png"));
+		alert.setHeaderText(null);
+		alert.setTitle("Eliminar Web");
+		alert.setContentText("¿Estas seguro de que quieres borrar esta web?");
+		
+		Optional<ButtonType> action = alert.showAndWait();
+		if (action.get() == ButtonType.OK) {
+			webTable.getItems().remove(lastWeb);
+		}
+    	
     	if (webTable.getSelectionModel().getSelectedItem() == null) {
     		btnEliminarWeb.setDisable(true);
 		}

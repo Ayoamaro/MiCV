@@ -12,8 +12,8 @@
    <children>
       <TableView fx:id="tablaCon" editable="true" prefHeight="400.0" prefWidth="513.0" HBox.hgrow="ALWAYS">
         <columns>
-          <TableColumn fx:id="denominacion" prefWidth="200.0" text="Denominación" />
-          <TableColumn fx:id="nivel" prefWidth="200.0" text="Nivel" />
+          <TableColumn fx:id="denominacionColumn" prefWidth="200.0" text="Denominación" />
+          <TableColumn fx:id="nivelColumn" prefWidth="200.0" text="Nivel" />
         </columns>
       </TableView>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" HBox.hgrow="NEVER">

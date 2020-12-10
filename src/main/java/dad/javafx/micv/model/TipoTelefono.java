@@ -10,7 +10,7 @@ public enum TipoTelefono {
 	Móvil(2),
 	Empresa(3);
 	
-	TipoTelefono(int i){
+	TipoTelefono(int x){
 		
 	}
 }
