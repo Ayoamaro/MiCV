@@ -7,7 +7,7 @@ package dad.javafx.micv.model;
 public enum Nivel {
 
 	Básico(1),
-	Intermedio(2),
+	Medio(2),
 	Avanzado(3);
 	
 	Nivel(int x){

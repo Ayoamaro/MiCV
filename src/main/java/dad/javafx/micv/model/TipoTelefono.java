@@ -6,9 +6,8 @@ package dad.javafx.micv.model;
  */
 public enum TipoTelefono {
 	
-	Fijo(1),
-	Móvil(2),
-	Empresa(3);
+	Domicilio(1),
+	Móvil(2);
 	
 	TipoTelefono(int x){
 		
