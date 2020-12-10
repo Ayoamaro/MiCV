@@ -62,7 +62,7 @@ Para añadir teléfonos, direcciones de correo y páginas web se deben implement
 
 ![](https://github.com/Ayoamaro/MiCV/blob/main/docs/images/nueva-web.png?raw=true)
 
-Para eliminar teléfonos, direcciones de correo o páginas web, se deberá seleccionar de la tabla y pulsar "Eliminar"; antes de eliminar, pedir confirmación al usuario mediante otro cuadro de diálogo (Alert).
+Para eliminar teléfonos, direcciones de correo o páginas web, se deberá seleccionar de la tabla y pulsar "Eliminar"; antes de eliminar, pedir confirmación al usuario mediante otro cuadro de diálogo **(Alert)**.
 
 Los datos se deberán poder editar directamente en la tabla.
 
